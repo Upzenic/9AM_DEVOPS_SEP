@@ -2,7 +2,7 @@ color = input("What is your favourite color? ")
 
 print("Your favourite color is", color)
 
-if color == "red":
-    print("Blue like the sky!")
+if color == "pink":
+    print("Pink like the pomergranate!")
 else:
     print("Nice choice!")
