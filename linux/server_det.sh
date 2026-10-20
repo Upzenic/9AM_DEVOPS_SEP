@@ -2,7 +2,7 @@
 #
 
 
-for i in (1..10):
+for i in (1..5):
 do
 	echo "Hello, from server details"
 done
