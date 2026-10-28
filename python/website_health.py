@@ -1,6 +1,6 @@
 import requests
 
-website = input("Enter website URL: ")
+website = "https://www.google.com"
 
 response = requests.get(website, timeout=5)
 
