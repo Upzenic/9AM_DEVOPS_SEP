@@ -10,5 +10,13 @@ pipeline{
           '''
         }
       }
+      stage('deploy'){
+          steps{
+              sh '''
+                echo "Running Python script"
+                python ${WORKSPACE}/python/script.py
+              '''
+          }
+      }
     }
 }
