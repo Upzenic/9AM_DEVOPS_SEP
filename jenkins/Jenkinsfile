@@ -1,6 +1,8 @@
 pipeline{
 
-    agent any
+    agent {
+        label 'Node1'
+    }
 
     stages{
       stage('build'){
@@ -14,7 +16,7 @@ pipeline{
           steps{
               sh '''
                 echo "Running Python script"
-                python ${WORKSPACE}/python/script.py
+                python3 ${WORKSPACE}/python/script.py
               '''
           }
       }
