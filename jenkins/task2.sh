@@ -11,11 +11,11 @@ pipeline {
                     TIMESTAMP=$(date +%Y%m%d_%H%M%S)
                     BACKUP_NAME="jenkins_backup_$TIMESTAMP.tar.gz"
 
-                    # Create backup directory if it doesn't exist
-                    sudo mkdir -p $BACKUP_DIR
+                    # Create backup directory without sudo
+                    mkdir -p $BACKUP_DIR
 
-                    # Create compressed archive excluding builds and workspaces to save space
-                    sudo tar --exclude='jobs/*/builds' \
+                    # Create compressed archive without sudo
+                    tar --exclude='jobs/*/builds' \
                         --exclude='workspace' \
                         --exclude='caches' \
                         -czf "$BACKUP_DIR/$BACKUP_NAME" \
@@ -23,18 +23,10 @@ pipeline {
 
                     echo "Backup created successfully at: $BACKUP_DIR/$BACKUP_NAME"
 
-                    # Optional: Clean up backups older than 7 days
-                    sudo find $BACKUP_DIR -name "jenkins_backup_*.tar.gz" -mtime +7 -delete
+                    # Clean up backups older than 7 days
+                    find $BACKUP_DIR -name "jenkins_backup_*.tar.gz" -mtime +7 -delete
                 '''
             }
-        }
-    }
-    post {
-        success {
-            echo 'Jenkins backup job completed successfully!'
-        }
-        failure {
-            echo 'Jenkins backup job failed. Please check permissions or disk space.'
         }
     }
 }
