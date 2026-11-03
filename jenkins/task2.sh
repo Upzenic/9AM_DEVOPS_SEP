@@ -7,7 +7,7 @@ pipeline {
                 echo "Starting Jenkins server backup..."
                 sh '''
                     # Define backup directory and timestamp
-                    BACKUP_DIR="/var/lib/jenkins/backups"
+                    BACKUP_DIR="/tmp"
                     TIMESTAMP=$(date +%Y%m%d_%H%M%S)
                     BACKUP_NAME="jenkins_backup_$TIMESTAMP.tar.gz"
 
