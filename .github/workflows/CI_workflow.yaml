@@ -33,3 +33,12 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+  deploy:
+   runs-on: ubuntu-24.04
+   steps:
+     - name: Get Host details
+       run: |
+         echo "Server name is: `hostname`"
+         echo "OS Details: `cat /etc/os-release`"
+
+   
