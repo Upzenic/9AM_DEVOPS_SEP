@@ -17,7 +17,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: myvm
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -34,7 +34,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   deploy:
-   runs-on: ubuntu-24.04
+   runs-on: myvm
    needs: build
    steps:
      - name: Get Host details
