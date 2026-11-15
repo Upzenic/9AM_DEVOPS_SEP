@@ -34,8 +34,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   deploy:
-   runs-on: myvm
-   needs: build
+   runs-on: ubuntu-22.04
    steps:
      - name: Get Host details
        run: |
