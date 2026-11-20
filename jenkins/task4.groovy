@@ -1,18 +1,15 @@
 pipeline {
-    agent none
-
-    parameters {
-        string(name: 'MY_INPUT', defaultValue: 'test-release', description: 'Lowercase letters, numbers, hyphens (3 to 30 characters)')
-    }
-
+    agent any
     stages {
-        stage('Validate Input') {
+        stage('Ask Input') {
             steps {
                 script {
-                    if (!(params.MY_INPUT ==~ /^[a-z0-9-]{3,30}$/)) {
-                        error('Invalid name: use 3 to 30 lowercase letters, numbers or hyphens')
-                    }
-                    echo "You entered: ${params.MY_INPUT}"
+                    // Wrap input assignment inside a script block
+                    def userValue = input message: 'Enter your deployment name:', parameters: [
+                        string(name: 'MY_INPUT', defaultValue: 'test-release', description: 'Type anything here')
+                    ]
+                    
+                    echo "You entered: ${userValue}"
                 }
             }
         }
