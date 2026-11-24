@@ -35,8 +35,8 @@ jobs:
           echo test, and deploy your project.
 
   deploy:
-    runs-on: ubuntu-24.04
     needs: build
+    runs-on: ubuntu-24.04
     steps:
       - name: Get Host details
         run: |
