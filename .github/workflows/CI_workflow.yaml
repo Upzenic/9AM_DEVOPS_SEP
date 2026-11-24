@@ -35,12 +35,12 @@ jobs:
           echo test, and deploy your project.
 
   deploy:
-    needs: build
-    runs-on: ubuntu-24.04
-    steps:
-      - name: Get Host details
-        run: |
-          echo "Sever name is: `hostname`"
-          echo "OS Details: `cat /etc/os-release`"          
+   needs: build
+   runs-on: ubuntu-24.04
+   steps:
+    - name: Get Host details
+      run: |
+       echo "Sever name is: `hostname`"
+       echo "OS Details: `cat /etc/os-release`"          
          
       
