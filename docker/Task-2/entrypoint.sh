@@ -1,9 +1,9 @@
-#!bin/bash
-Container_Name = "$CONTAINER_NAME"
-Container_IP = "$(hostname -i)"
-Date = "$(Date)"
-cat <<EOF > /usr/share/nginx/html/index.html
+#!/bin/bash
+Container_Name="${CONTAINER_NAME:-unknown}"
+Container_IP="$(hostname -i)"
+Date="($date)"
 
+cat <<EOF > /usr/share/nginx/html/index.html
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +11,7 @@ cat <<EOF > /usr/share/nginx/html/index.html
 </head>
 <body>
 
-    <h1>Container Details</h1>
+    <h1>Docker Container Details</h1>
 
     <p>Container Name: $Container_Name</p>
     <p>Container IP: $Container_IP</p>
@@ -19,7 +19,6 @@ cat <<EOF > /usr/share/nginx/html/index.html
 
 </body>
 </html>
-
 EOF
 
 exec nginx -g 'daemon off;'
