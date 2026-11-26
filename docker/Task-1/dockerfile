@@ -1,0 +1,7 @@
+FROM ubuntu:24.04
+RUN apt update
+RUN apt install nginx -y
+RUN rm -f /var/www/html/index.html
+COPY index.html /var/www/html
+EXPOSE 80
+ENTRYPOINT ["bin/bash", "-C", "service nginx start && bash"]
